@@ -7,7 +7,7 @@ pipeline {
 
     triggers {
         GenericTrigger(
-            token: 'docker-frontend'
+            token: 'docker-frontend-token'
         )
     }
     
