@@ -7,7 +7,7 @@ pipeline {
 
     triggers {
         GenericTrigger(
-            token: 'jenkins-token'
+            token: 'docker-frontend'
         )
     }
     
