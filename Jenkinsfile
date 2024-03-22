@@ -67,8 +67,8 @@ pipeline {
                 // sh "git push origin main"
 
                 git branch: 'main', credentialsId: 'jenkins-environments', url: 'https://github.com/Avagyan02/docker-frontend-backend-db.git'
+                sh 'cd ./docker-frontend-backend-db'
                 sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
-                sh './docker-frontend-backend-db'
                 sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"
                 // script {
                     
