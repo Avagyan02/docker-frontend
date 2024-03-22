@@ -43,7 +43,7 @@ pipeline {
                 sh "cd /var/jenkins_home/workspace"
 
                 script {
-                    sh "rm -r docker-frontend-backend-db"
+                    // sh "rm -r docker-frontend-backend-db"
                     def devopsProjectPath = '/var/jenkins_home/workspace/docker-frontend-backend-db'
                     // def folder = new File(devopsProjectPath)
 
