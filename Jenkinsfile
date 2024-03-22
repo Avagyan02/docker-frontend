@@ -64,6 +64,7 @@ pipeline {
                 sh "git config --global user.name Avagyan02"
                 sh "git commit -m 'update frontend-jenkins-file'"
                 sh "git branch"
+                sh "git checkout main"
                 sh "git push origin main"
             }
         }
