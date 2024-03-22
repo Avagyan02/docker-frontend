@@ -30,15 +30,15 @@ pipeline {
 
                 sh 'cd /var/jenkins_home/workspace | ls -la' 
                 sh 'docker build -t docker-frontend .'
-                sh "docker tag docker-frontend samavgn02/docker-frontend:${env.MY_VARIABLE}"
+                sh "docker tag docker-frontend ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
-                sh "docker push samavgn02/docker-frontend:${env.MY_VARIABLE}"
+                sh "docker push ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
             }
         }
 
         stage('Pull and Push Stage') {
             steps {
-                sh "docker pull docker-frontend:${env.MY_VARIABLE}"
+                sh "docker pull ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 sh "cd /var/jenkins_home/workspace"
                 sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
                 sh "cd docker-frontend-backend-db"
