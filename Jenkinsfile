@@ -44,13 +44,13 @@ pipeline {
 
                 script {
                     // sh "rm -r docker-frontend-backend-db"
-                    def devopsProjectPath = '/var/jenkins_home/workspace'
+                    def devopsProjectPath = '/var/jenkins_home/workspace/docker-frontend-backend-db'
                     // def folder = new File(devopsProjectPath)
 
-                    echo "------- 1 ${fileExists(devopsProjectPath)}"
+                    echo "------- 1 ${dirExists(devopsProjectPath)}"
 
                     // if (folder.exists() && folder.isDirectory()) {
-                    if (fileExists(devopsProjectPath)) {
+                    if (dirExists(devopsProjectPath)) {
                         sh "cd docker-frontend-backend-db"
                         sh "git pull origin main"
                     } else {
