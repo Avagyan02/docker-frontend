@@ -5,7 +5,6 @@ pipeline {
         MY_VARIABLE = sh(returnStdout: true, script: 'git rev-parse --short=7 HEAD').trim()
         DOCKERHUB_USERNAME = null
         DOCKERHUB_PASSWORD = null
-
     }
 
     triggers {
@@ -21,14 +20,10 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'jenkins-environments', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         DOCKERHUB_USERNAME = env.USERNAME
                         DOCKERHUB_PASSWORD = env.PASSWORD
-                        echo "Password: ${env.PASSWORD}"
-
-                        echo "Username: ${env.USERNAME}"
-                        echo "Username: 1" 
                     }
                 }
 
-                sh 'cd /var/jenkins_home/workspace | ls -la' 
+                sh 'cd /var/jenkins_home/workspace'
                 sh 'docker build -t docker-frontend .'
                 sh "docker tag docker-frontend ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
@@ -43,7 +38,7 @@ pipeline {
                 // sh "cd /var"
                 // sh "ls -la"
 
-                // sh "rm -r docker-frontend-backend-db"
+                sh "rm -r docker-frontend-backend-db"
                 // sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
 
                 // sh "cat "
@@ -65,13 +60,15 @@ pipeline {
                 // sh "git branch"
                 // sh "git remote add origin https://Avagyan02:1Samvel2002@github.com/Avagyan02/project.git"
                 // sh "git push origin main"
-                sh 'cd ../'
-                sh 'ls -la'
-                git branch: 'main', credentialsId: 'jenkins-environments', url: 'https://github.com/Avagyan02/docker-frontend-backend-db.git'
-                sh 'cd docker-frontend-backend-db'
-                sh 'ls -la'
-                sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
-                sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"
+
+                // sh 'cd ../'
+                // sh 'ls -la'
+                // git branch: 'main', credentialsId: 'jenkins-environments', url: 'https://github.com/Avagyan02/docker-frontend-backend-db.git'
+                // sh 'cd docker-frontend-backend-db'
+                // sh 'ls -la'
+                // sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
+                // sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"
+                
                 // script {
                     
                 // }
