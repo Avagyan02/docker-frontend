@@ -47,10 +47,11 @@ pipeline {
                     def devopsProjectPath = '/var/jenkins_home/workspace/docker-frontend-backend-db'
                     // def folder = new File(devopsProjectPath)
 
-                    echo "------- 1 ${dirExists(devopsProjectPath)}"
 
+                    def folder = new File(devopsProjectPath)
+                    echo "------- 1 ${folder.isDirectory()}"
                     // if (folder.exists() && folder.isDirectory()) {
-                    if (dirExists(devopsProjectPath)) {
+                    if (folder.isDirectory()) {
                         sh "cd docker-frontend-backend-db"
                         sh "git pull origin main"
                     } else {
