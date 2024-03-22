@@ -40,20 +40,20 @@ pipeline {
             steps {
                 sh "docker pull ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 sh 'ls -la'
-                sh "cd /var/jenkins_home/workspace"
+                sh "cd /var/jenkins_home"
                 
                 sh "rm -r docker-frontend-backend-db"
                 sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
 
                 sh 'ls -la'
 
-                sh "cd /var/jenkins_home/workspace/docker-frontend-backend-db"
+                sh "cd /var/jenkins_home/docker-frontend-backend-db"
                 sh 'ls -la'
                 sh "git checkout main"
                 sh 'ls -la'
                 sh 'cd frontend'
                 sh "rm -r Dockerfile"
-                sh "docker save ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE} > /var/jenkins_home/workspace/docker-frontend-backend-db/frontend"
+                sh "docker save ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE} > /var/jenkins_home/docker-frontend-backend-db/frontend"
                 sh "git status"
                 sh "git add ."
                 sh "git config --global user.email samvel.avagyan.02@bk.ru"
