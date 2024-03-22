@@ -47,7 +47,7 @@ pipeline {
                     // def folder = new File(devopsProjectPath)
 
                     // if (folder.exists() && folder.isDirectory()) {
-                    if (fileExists(devopsProjectPath))
+                    if (fileExists(devopsProjectPath)) {
                         sh "cd docker-frontend-backend-db"
                         sh "git pull origin"
                     } else {
