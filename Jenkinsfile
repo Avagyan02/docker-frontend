@@ -44,7 +44,7 @@ pipeline {
 
                 script {
                     // sh "rm -r docker-frontend-backend-db"
-                    def devopsProjectPath = '/var/jenkins_home/workspace/docker-frontend-backend-db'
+                    def devopsProjectPath = '/var/jenkins_home/workspace'
                     // def folder = new File(devopsProjectPath)
 
                     echo "------- 1 ${fileExists(devopsProjectPath)}"
