@@ -33,6 +33,7 @@ pipeline {
 
         stage('Pull and Push Stage') {
             steps {
+                git branch: 'main', credentialsId: 'github-environments', url: 'https://github.com/Avagyan02/docker-frontend-backend-db.git'
                 // sh "docker pull ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 // sh 'ls -la'
                 // sh "cd /var"
@@ -61,17 +62,14 @@ pipeline {
                 // sh "git remote add origin https://Avagyan02:1Samvel2002@github.com/Avagyan02/project.git"
                 // sh "git push origin main"
 
-                sh 'cd ../'
-                sh 'ls -la'
-                git branch: 'main', credentialsId: 'jenkins-environments', url: 'https://github.com/Avagyan02/docker-frontend-backend-db.git'
-                sh 'cd docker-frontend-backend-db'
-                sh 'ls -la'
-                sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
-                sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"
-                
-                // script {
-                    
-                // }
+                script {
+                    sh 'cd ../'
+                    sh 'ls -la'
+                    sh 'cd docker-frontend-backend-db'
+                    sh 'ls -la'
+                    sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
+                    sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"
+                }
             }   
         }
     }
