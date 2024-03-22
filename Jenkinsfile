@@ -49,7 +49,7 @@ pipeline {
                     // if (folder.exists() && folder.isDirectory()) {
                     if (fileExists(devopsProjectPath)) {
                         sh "cd docker-frontend-backend-db"
-                        sh "git pull origin"
+                        sh "git pull origin main"
                     } else {
                         sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
                     }
