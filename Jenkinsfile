@@ -57,6 +57,7 @@ pipeline {
 
                 sh "cd docker-frontend-backend-db"
                 sh "git checkout main"
+                sh 'ls -la'
                 sh "rm -r Dockerfile"
                 sh "docker save ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE} > /var/jenkins_home/workspace/docker-frontend-backend-db"
                 sh "git status"
@@ -67,7 +68,7 @@ pipeline {
                 sh "git branch"
                 sh "git remote add origin https://Avagyan02:1Samvel2002@github.com/Avagyan02/project.git"
                 sh "git push origin main"
-                
+
             }
         }
     }
