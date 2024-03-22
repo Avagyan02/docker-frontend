@@ -48,8 +48,9 @@ pipeline {
                 sh 'ls -la'
 
                 sh "cd docker-frontend-backend-db"
+                sh 'ls -la'
                 sh "git checkout main"
-                sh 'cd ls -la'
+                sh 'ls -la'
                 sh 'cd frontend'
                 sh "rm -r Dockerfile"
                 sh "docker save ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE} > /var/jenkins_home/workspace/docker-frontend-backend-db/frontend"
