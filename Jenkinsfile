@@ -5,6 +5,7 @@ pipeline {
         MY_VARIABLE = sh(returnStdout: true, script: 'git rev-parse --short=7 HEAD').trim()
         DOCKERHUB_USERNAME = null
         DOCKERHUB_PASSWORD = null
+        GIT_CREDENTIALS = credentials('github-environments')
     }
 
     triggers {
@@ -33,7 +34,9 @@ pipeline {
 
         stage('Pull and Push Stage') {
             steps {
-                git branch: 'main', credentialsId: 'github-environments', url: 'https://github.com/Avagyan02/docker-frontend-backend-db.git'
+                // git branch: 'main', credentialsId: 'github-environments', url: 'https://github.com/Avagyan02/docker-frontend-backend-db.git'
+                
+                
                 // sh "docker pull ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 // sh 'ls -la'
                 // sh "cd /var"
@@ -61,6 +64,12 @@ pipeline {
                 // sh "git branch"
                 // sh "git remote add origin https://Avagyan02:1Samvel2002@github.com/Avagyan02/project.git"
                 // sh "git push origin main"
+
+                dir('/root') {
+                    git credentials: GIT_CREDENTIALS, url: 'https://github.com/Avagyan02/docker-frontend-backend-db.git'
+                    sh 'ls -la'
+                }
+
 
                 script {
                     sh 'cd ../'
