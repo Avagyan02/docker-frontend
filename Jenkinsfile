@@ -57,7 +57,7 @@ pipeline {
 
                 sh "cd docker-frontend-backend-db"
                 sh "rm -r Dockerfile"
-                sh "docker save docker-frontend:${env.MY_VARIABLE} > /var/jenkins_home/workspace/docker-frontend-backend-db"
+                sh "docker save ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE} > /var/jenkins_home/workspace/docker-frontend-backend-db"
                 sh "git status"
                 sh "git add ."
                 sh "git commit -m 'update frontend-jenkins-file'"
