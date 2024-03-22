@@ -39,6 +39,7 @@ pipeline {
         stage('Pull and Push Stage') {
             steps {
                 sh "docker pull ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
+                sh 'ls -la'
                 sh "cd /var/jenkins_home/workspace"
                 sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
                 sh "cd docker-frontend-backend-db"
