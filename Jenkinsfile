@@ -19,16 +19,16 @@ pipeline {
                         echo "Username: ${env.USERNAME}"
                         echo "Password: ${env.PASSWORD}"
                     }
+
+                    echo "Username: ${env.USERNAME}"
+                    echo "Username: 1"
+
+                    sh 'cd /var/jenkins_home/workspace | ls -la' 
+                    sh 'docker build -t docker-frontend .'
+                    sh "docker tag docker-frontend samavgn02/docker-frontend:${env.MY_VARIABLE}"
+                    sh "docker login -u ${env.USERNAME} -p ${env.PASSWORD}"
+                    sh "docker push samavgn02/docker-frontend:${env.MY_VARIABLE}" 
                 }
-
-                echo "Username: ${env.USERNAME}"
-                echo "Username: 1"
-
-                sh 'cd /var/jenkins_home/workspace | ls -la' 
-                sh 'docker build -t docker-frontend .'
-                sh "docker tag docker-frontend samavgn02/docker-frontend:${env.MY_VARIABLE}"
-                sh "docker login -u ${env.USERNAME} -p ${env.PASSWORD}"
-                sh "docker push samavgn02/docker-frontend:${env.MY_VARIABLE}" 
             }
         }
 
