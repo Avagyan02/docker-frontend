@@ -45,9 +45,11 @@ pipeline {
                 sh "rm -r docker-frontend-backend-db"
                 sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
 
+                sh 'cd ls -la | echo aaaa'
+
                 sh "cd docker-frontend-backend-db"
                 sh "git checkout main"
-                sh 'ls -la'
+                sh 'cd ls -la'
                 sh 'cd frontend'
                 sh "rm -r Dockerfile"
                 sh "docker save ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE} > /var/jenkins_home/workspace/docker-frontend-backend-db/frontend"
