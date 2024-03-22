@@ -46,6 +46,8 @@ pipeline {
                     def devopsProjectPath = '/var/jenkins_home/workspace/docker-frontend-backend-db'
                     // def folder = new File(devopsProjectPath)
 
+                    sh "rm -r docker-frontend-backend-db"
+
                     // if (folder.exists() && folder.isDirectory()) {
                     if (fileExists(devopsProjectPath)) {
                         sh "cd docker-frontend-backend-db"
