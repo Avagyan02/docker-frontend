@@ -42,11 +42,10 @@ pipeline {
                 sh 'ls -la'
                 sh "cd /var/jenkins_home/workspace"
 
-
                 script {
-                    def devopsProjectPath = '/var/jenkins_home/workspace'
-                    def folder = new File(folderPath)
-                    
+                    def devopsProjectPath = '/var/jenkins_home/workspace/docker-frontend-backend-db'
+                    def folder = new File(devopsProjectPath)
+
                     if (folder.exists() && folder.isDirectory()) {
                         sh "cd docker-frontend-backend-db"
                         sh "git pull origin"
