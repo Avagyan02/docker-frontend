@@ -42,7 +42,7 @@ pipeline {
                 sh 'ls -la'
                 sh "cd /var/jenkins_home/workspace"
                 
-                sh "rm -r docker-frontend-backend-db"
+                // sh "rm -r docker-frontend-backend-db"
                 sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
 
                 sh "cd docker-frontend-backend-db"
