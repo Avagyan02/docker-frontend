@@ -3,8 +3,8 @@ pipeline {
     
     environment {
         MY_VARIABLE = sh(returnStdout: true, script: 'git rev-parse --short=7 HEAD').trim()
-        DOCKERHUB_USERNAME = credentials('dockerhub-username')
-        DOCKERHUB_PASSWORD = credentials('dockerhub-password')
+        // DOCKERHUB_USERNAME = credentials('dockerhub-username')
+        // DOCKERHUB_PASSWORD = credentials('dockerhub-password')
 
     }
 
