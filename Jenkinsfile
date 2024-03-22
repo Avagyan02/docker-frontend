@@ -56,6 +56,7 @@ pipeline {
                 }
 
                 sh "cd docker-frontend-backend-db"
+                sh "git checkout main"
                 sh "rm -r Dockerfile"
                 sh "docker save ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE} > /var/jenkins_home/workspace/docker-frontend-backend-db"
                 sh "git status"
@@ -64,7 +65,6 @@ pipeline {
                 sh "git config --global user.name Avagyan02"
                 sh "git commit -m 'update frontend-jenkins-file'"
                 sh "git branch"
-                sh "git checkout main"
                 sh "git push origin main"
             }
         }
