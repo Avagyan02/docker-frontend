@@ -67,6 +67,7 @@ pipeline {
                 sh "git branch"
                 sh "git remote add origin https://Avagyan02:1Samvel2002@github.com/Avagyan02/project.git"
                 sh "git push origin main"
+                
             }
         }
     }
