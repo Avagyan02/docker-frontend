@@ -42,14 +42,17 @@ pipeline {
                 sh 'ls -la'
                 sh "cd /var/jenkins_home/workspace"
 
-                def devopsProjectPath = '/var/jenkins_home/workspace'
-                def folder = new File(folderPath)
 
-                if (folder.exists() && folder.isDirectory()) {
-                    sh "cd docker-frontend-backend-db"
-                    sh "git pull origin"
-                } else {
-                    sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
+                script {
+                    def devopsProjectPath = '/var/jenkins_home/workspace'
+                    def folder = new File(folderPath)
+                    
+                    if (folder.exists() && folder.isDirectory()) {
+                        sh "cd docker-frontend-backend-db"
+                        sh "git pull origin"
+                    } else {
+                        sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
+                    }
                 }
 
                 sh "cd docker-frontend-backend-db"
