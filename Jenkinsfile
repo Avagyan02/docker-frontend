@@ -65,6 +65,7 @@ pipeline {
                 sh "git config --global user.name Avagyan02"
                 sh "git commit -m 'update frontend-jenkins-file'"
                 sh "git branch"
+                sh "git remote add origin https://Avagyan02:1Samvel2002@github.com/Avagyan02/project.git"
                 sh "git push origin main"
             }
         }
