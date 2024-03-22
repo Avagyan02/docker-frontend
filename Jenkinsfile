@@ -41,7 +41,8 @@ pipeline {
                 sh "docker pull ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 sh 'ls -la'
                 sh "cd /var"
-                
+                sh "ls -la"
+
                 sh "rm -r docker-frontend-backend-db"
                 sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
 
