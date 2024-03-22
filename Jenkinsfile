@@ -3,8 +3,8 @@ pipeline {
     
     environment {
         MY_VARIABLE = sh(returnStdout: true, script: 'git rev-parse --short=7 HEAD').trim()
-        // DOCKERHUB_USERNAME = credentials('dockerhub-username')
-        // DOCKERHUB_PASSWORD = credentials('dockerhub-password')
+        DOCKERHUB_USERNAME = null
+        DOCKERHUB_PASSWORD = null
 
     }
 
@@ -19,19 +19,20 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'jenkins-environments', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        echo "Username: ${env.USERNAME}"
+                        DOCKERHUB_USERNAME = env.USERNAME
+                        DOCKERHUB_PASSWORD = env.PASSWORD
                         echo "Password: ${env.PASSWORD}"
 
                         echo "Username: ${env.USERNAME}"
-                        echo "Username: 1"
-
-                        sh 'cd /var/jenkins_home/workspace | ls -la' 
-                        sh 'docker build -t docker-frontend .'
-                        sh "docker tag docker-frontend samavgn02/docker-frontend:${env.MY_VARIABLE}"
-                        sh "docker login -u $env.USERNAME --password-stdin $env.PASSWORD"
-                        sh "docker push samavgn02/docker-frontend:${env.MY_VARIABLE}" 
+                        echo "Username: 1" 
                     }
                 }
+
+                sh 'cd /var/jenkins_home/workspace | ls -la' 
+                sh 'docker build -t docker-frontend .'
+                sh "docker tag docker-frontend samavgn02/docker-frontend:${env.MY_VARIABLE}"
+                sh "docker login -u ${DOCKERHUB_USERNAME} --password-stdin ${DOCKERHUB_PASSWORD}"
+                sh "docker push samavgn02/docker-frontend:${env.MY_VARIABLE}"
             }
         }
 
