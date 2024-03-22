@@ -47,7 +47,7 @@ pipeline {
 
                 sh 'ls -la'
 
-                sh "cd ./docker-frontend-backend-db"
+                sh "cd /var/jenkins_home/workspace/docker-frontend-backend-db"
                 sh 'ls -la'
                 sh "git checkout main"
                 sh 'ls -la'
