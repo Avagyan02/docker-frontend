@@ -41,23 +41,9 @@ pipeline {
                 sh "docker pull ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 sh 'ls -la'
                 sh "cd /var/jenkins_home/workspace"
-
-                script {
-                    // sh "rm -r docker-frontend-backend-db"
-                    def devopsProjectPath = '/var/jenkins_home/workspace/docker-frontend-backend-db'
-                    // def folder = new File(devopsProjectPath)
-
-
-                    def folder = new File(devopsProjectPath)
-                    echo "------- 1 ${folder.isDirectory()}"
-                    // if (folder.exists() && folder.isDirectory()) {
-                    if (folder.isDirectory()) {
-                        sh "cd docker-frontend-backend-db"
-                        sh "git pull origin main"
-                    } else {
-                        sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
-                    }
-                }
+                
+                sh "rm -r docker-frontend-backend-db"
+                sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
 
                 sh "cd docker-frontend-backend-db"
                 sh "git checkout main"
