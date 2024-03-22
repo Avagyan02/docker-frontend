@@ -47,6 +47,7 @@ pipeline {
                     def devopsProjectPath = '/var/jenkins_home/workspace/docker-frontend-backend-db'
                     // def folder = new File(devopsProjectPath)
 
+                    echo "------- 1 ${fileExists(devopsProjectPath)}"
 
                     // if (folder.exists() && folder.isDirectory()) {
                     if (fileExists(devopsProjectPath)) {
