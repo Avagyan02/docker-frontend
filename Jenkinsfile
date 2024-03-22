@@ -45,7 +45,7 @@ pipeline {
                 sh "rm -r docker-frontend-backend-db"
                 sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
 
-                sh 'cd ls -la | echo aaaa'
+                sh 'ls -la'
 
                 sh "cd docker-frontend-backend-db"
                 sh "git checkout main"
