@@ -85,6 +85,10 @@ pipeline {
                 withCredentials([
                     gitUsernamePassword(credentialsId: 'github-environments', gitToolName: 'Default')
                 ]) {
+                    if [ -d "/var/jenkins_home/workspace/docker-frontend-backend-db" ]; then
+                        rm -rf "docker-frontend-backend-db"
+                    fi
+
                     sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git"
                     sh "ls -la"
                     sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
