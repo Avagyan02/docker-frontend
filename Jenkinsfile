@@ -115,9 +115,9 @@ pipeline {
                 sh 'cat ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh'
                 sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"                    
-                sh "git add ."
-                sh "git commit -m 'update front docker file"
-                sh "git push origin"
+                sh "git -C ./docker-frontend-backend-db add ."
+                sh "git -C ./docker-frontend-backend-db commit -m 'update front docker file"
+                sh "git -C ./docker-frontend-backend-db push origin"
             }   
         }
     }
