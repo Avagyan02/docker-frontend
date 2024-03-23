@@ -94,7 +94,7 @@ pipeline {
                     // sh '[ -d "/var/jenkins_home/workspace/docker-frontend-backend-db" ] && rm -r "docker-frontend-backend-db"'
                     sh 'cd docker-frontend-backend-db'
                     sh 'ls -la'
-                    sh 'git pull origin master'
+                    sh 'git -C /var/jenkins_home/workspace/docker-frontend-backend-db pull origin master'
                     
                     sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git"
                     sh "ls -la"
