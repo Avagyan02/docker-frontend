@@ -92,6 +92,10 @@ pipeline {
                     // }
 
                     // sh '[ -d "/var/jenkins_home/workspace/docker-frontend-backend-db" ] && rm -r "docker-frontend-backend-db"'
+                    
+                    sh 'find / -type d -name "docker-frontend-backend-db"'
+                    sh 'echo 2222'
+
                     sh 'cd docker-frontend-backend-db'
                     sh 'ls -la'
                     sh 'git -C /var/jenkins_home/workspace/docker-frontend-backend-db pull origin master'
