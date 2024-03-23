@@ -131,8 +131,8 @@ pipeline {
                 sh "bash docker-compose-file-version-change.sh"                    
 
                 sh "git add ."
-                sh "git commit -m 'changing 2'"
-                withCredentials([usernamePassword(credentialsId: 'github-environments', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
+                sh "git commit -m 'update front jenkins file'"
+                withCredentials([usernamePassword(credentialsId: 'github-environments', rnameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                     sh "git push -u origin master"
                 }
             }   
