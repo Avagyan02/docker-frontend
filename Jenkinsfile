@@ -127,7 +127,7 @@ pipeline {
                     poll: true
                 )
                 
-                sh "${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}  111"
+                // sh "${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}  111"
 
                 sh "bash docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 sh "bash docker-compose-file-version-change.sh"                    
