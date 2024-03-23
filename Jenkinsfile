@@ -42,7 +42,7 @@ pipeline {
                 // sh "cd /var"
                 // sh "ls -la"
 
-                sh "rm -r docker-frontend-backend-db"
+                // sh "rm -r docker-frontend-backend-db"
                 // sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
 
                 // sh "cat "
