@@ -5,7 +5,6 @@ pipeline {
         MY_VARIABLE = sh(returnStdout: true, script: 'git rev-parse --short=7 HEAD').trim()
         DOCKERHUB_USERNAME = null
         DOCKERHUB_PASSWORD = null
-        GIT_CREDENTIALS = credentials('github-environments')
     }
 
     triggers {
