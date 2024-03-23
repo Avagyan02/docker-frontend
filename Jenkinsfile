@@ -42,7 +42,7 @@ pipeline {
                 // sh "cd /var"
                 // sh "ls -la"
 
-                // sh "rm -r docker-frontend-backend-db"
+                sh "rm -r docker-frontend-backend-db"
                 // sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
 
                 // sh "cat "
@@ -96,7 +96,7 @@ pipeline {
                     sh 'find / -type d -name "docker-frontend-backend-db"'
                     sh 'echo 2222'
 
-                    sh 'cd /var/jenkins_home/workspace/docker-frontend/docker-frontend-backend-db'
+                    // sh 'rm -r /var/jenkins_home/workspace/docker-frontend/docker-frontend-backend-db'
                     sh 'ls -la'
                     sh 'git -C /var/jenkins_home/workspace/docker-frontend-backend-db pull origin master'
                     
