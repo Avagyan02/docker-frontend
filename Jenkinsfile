@@ -42,7 +42,7 @@ pipeline {
                 // sh "cd /var"
                 // sh "ls -la"
 
-                sh "rm -r docker-frontend-backend-db"
+                // sh "rm -r docker-frontend-backend-db"
                 // sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git" 
 
                 // sh "cat "
@@ -97,9 +97,10 @@ pipeline {
                     sh 'echo 2222'
 
                     // sh 'rm -r /var/jenkins_home/workspace/docker-frontend/docker-frontend-backend-db'
-                    sh 'ls -la'
-                    sh 'git -C /var/jenkins_home/workspace/docker-frontend-backend-db pull origin master'
+                    // sh 'ls -la'
+                    // sh 'git -C /var/jenkins_home/workspace/docker-frontend-backend-db pull origin master'
                     
+                    sh 'cd /var/jenkins_home/workspace'
                     sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git"
                     sh "ls -la"
                     sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
