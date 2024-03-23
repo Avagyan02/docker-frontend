@@ -120,14 +120,14 @@ pipeline {
                 // sh "git -C ./docker-frontend-backend-db push origin"
 
                 git(
-                    url: "https://github.com/DavoA/TaskDevops.git",
-                    branch: "main",
+                    url: "https://github.com/Avagyan02/docker-frontend-backend-db.git",
+                    branch: "master",
                     changelog: true,
                     poll: true
                 )
                 
-                sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
-                sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"                    
+                sh "bash docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
+                sh "bash docker-compose-file-version-change.sh"                    
 
                 sh "git add ."
                 sh "git commit -m 'changing 2'"
