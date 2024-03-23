@@ -112,6 +112,7 @@ pipeline {
 
 
                 sh 'git clone https://github.com/Avagyan02/docker-frontend-backend-db.git || true'
+                hs 'cat ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh'
                 sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
                 sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"                    
                 sh "git add ."
