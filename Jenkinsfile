@@ -85,11 +85,13 @@ pipeline {
                 withCredentials([
                     gitUsernamePassword(credentialsId: 'github-environments', gitToolName: 'Default')
                 ]) {
-                    script {
-                        if (fileExists("/var/jenkins_home/workspace/docker-frontend-backend-db")) {
-                            sh "rm -rf docker-frontend-backend-db"
-                        }
-                    }
+                    // script {
+                    //     if (fileExists("/var/jenkins_home/workspace/docker-frontend-backend-db")) {
+                    //         sh "rm -rf docker-frontend-backend-db"
+                    //     }
+                    // }
+
+                    sh '[ -d "/var/jenkins_home/workspace/docker-frontend-backend-db" ] && rm -r "docker-frontend-backend-db"'
 
                     sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git"
                     sh "ls -la"
@@ -102,8 +104,4 @@ pipeline {
             }   
         }
     }
-}
-
-def fileExists(filePath) {
-    return file(filePath).exists()
 }
