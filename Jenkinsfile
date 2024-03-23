@@ -96,7 +96,7 @@ pipeline {
                     sh 'find / -type d -name "docker-frontend-backend-db"'
                     sh 'echo 2222'
 
-                    sh 'cd docker-frontend-backend-db'
+                    sh 'cd /var/jenkins_home/workspace/docker-frontend/docker-frontend-backend-db'
                     sh 'ls -la'
                     sh 'git -C /var/jenkins_home/workspace/docker-frontend-backend-db pull origin master'
                     
