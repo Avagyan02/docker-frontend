@@ -21,13 +21,11 @@ pipeline {
                         DOCKERHUB_USERNAME = env.USERNAME
                         DOCKERHUB_PASSWORD = env.PASSWORD
                     }
+                    docker.withRegistry('https://index.docker.io/v1/', 'jenkins-environments') {
+                        docker.build("samavgn02/docker-frontend")
+                        docker.image("samavgn02/docker-frontend").push(env.MY_VARIABLE)
+                    }
                 }
-
-                sh 'cd /var/jenkins_home/workspace'
-                sh 'docker build -t docker-frontend .'
-                sh "docker tag docker-frontend ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
-                sh "docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}"
-                sh "docker push ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
             }
         }
 

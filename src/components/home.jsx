@@ -28,6 +28,9 @@ const Home = () => {
   const getTodos = async () => {
     try {
       const res = await axios.get(`${API_URL}/todos`);
+      console.log(API_URL, 'api-url')
+      console.log(res.data, 'res.data')
+      console.log(1111)
       setTodos(res.data);
     } catch (err) {
       console.log(err);
