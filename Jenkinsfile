@@ -132,7 +132,7 @@ pipeline {
 
                 sh "git add ."
                 sh "git commit -m 'update front jenkins file'"
-                withCredentials([usernamePassword(credentialsId: 'github-environments', nameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'github-environments', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                     sh "git push -u origin master"
                 }
             }   
