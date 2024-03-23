@@ -132,7 +132,7 @@ pipeline {
 
                 sh "git add ."
                 sh "git commit -m 'changing 2'"
-                withCredentials([usernamePassword(credentialsId: 'github-environments', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'github-environments', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
                     sh "git push -u origin master"
                 }
             }   
