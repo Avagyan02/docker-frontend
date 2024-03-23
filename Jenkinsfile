@@ -85,9 +85,9 @@ pipeline {
                 withCredentials([
                     gitUsernamePassword(credentialsId: 'github-environments', gitToolName: 'Default')
                 ]) {
-                    if [ -d "/var/jenkins_home/workspace/docker-frontend-backend-db" ]; then
-                        rm -rf "docker-frontend-backend-db"
-                    fi
+                    if (fileExists("/var/jenkins_home/workspace/docker-frontend-backend-db")) {
+                        sh "rm -rf docker-frontend-backend-db"
+                    }
 
                     sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git"
                     sh "ls -la"
