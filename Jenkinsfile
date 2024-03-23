@@ -82,9 +82,9 @@ pipeline {
                 // }
 
 
-                withCredentials([
-                    gitUsernamePassword(credentialsId: 'github-environments', gitToolName: 'Default')
-                ]) {
+                // withCredentials([
+                //     gitUsernamePassword(credentialsId: 'github-environments', gitToolName: 'Default')
+                // ]) {
                     // script {
                     //     if (fileExists("/var/jenkins_home/workspace/docker-frontend-backend-db")) {
                     //         sh "rm -rf docker-frontend-backend-db"
@@ -93,22 +93,30 @@ pipeline {
 
                     // sh '[ -d "/var/jenkins_home/workspace/docker-frontend-backend-db" ] && rm -r "docker-frontend-backend-db"'
                     
-                    sh 'find / -type d -name "docker-frontend-backend-db"'
-                    sh 'echo 2222'
+                // sh 'find / -type d -name "docker-frontend-backend-db"'
+                // sh 'echo 2222'
 
-                    // sh 'rm -r /var/jenkins_home/workspace/docker-frontend/docker-frontend-backend-db'
-                    // sh 'ls -la'
-                    // sh 'git -C /var/jenkins_home/workspace/docker-frontend-backend-db pull origin master'
-                    
-                    sh 'cd /var/jenkins_home'
-                    sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git"
-                    sh "ls -la"
-                    sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
-                    sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"                    
-                    sh "git add ."
-                    sh "git commit -m 'update front docker file"
-                    sh "git push origin"
-                }
+                // sh 'rm -r /var/jenkins_home/workspace/docker-frontend/docker-frontend-backend-db'
+                // sh 'ls -la'
+                // sh 'git -C /var/jenkins_home/workspace/docker-frontend-backend-db pull origin master'
+                
+                // sh 'cd /var/jenkins_home'
+                // sh "git clone https://github.com/Avagyan02/docker-frontend-backend-db.git"
+                // sh "ls -la"
+                // sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
+                // sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"                    
+                // sh "git add ."
+                // sh "git commit -m 'update front docker file"
+                // sh "git push origin"
+                // }
+
+
+                sh 'git clone https://github.com/Avagyan02/docker-frontend-backend-db.git || true'
+                sh "bash ./docker-frontend-backend-db/docker-compose-file-frontend-build-value-change.sh ${DOCKERHUB_USERNAME}/docker-frontend:${env.MY_VARIABLE}"
+                sh "bash ./docker-frontend-backend-db/docker-compose-file-version-change.sh"                    
+                sh "git add ."
+                sh "git commit -m 'update front docker file"
+                sh "git push origin"
             }   
         }
     }
